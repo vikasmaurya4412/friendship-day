@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For DoctorSaab — Friendship Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Karla:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1b1410;
+    --bg-soft: #241a13;
+    --marigold: #e2932a;
+    --marigold-dim: #8a5a1f;
+    --ember: #c1440e;
+    --cream: #f0e6d8;
+    --muted: #b7a790;
+    --card-bg: #2a1f17;
+    --flame: #ffb347;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(226,147,42,0.10), transparent 45%),
+      var(--bg);
+    color:var(--cream);
+    font-family:'Karla', sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,.display{ font-family:'Yatra One', cursive; font-weight:400; }
+  .mono{ font-family:'Space Mono', monospace; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 24px;
+    position:relative;
+  }
+  .diya{
+    width:64px;
+    margin-bottom:22px;
+  }
+  .flame{
+    transform-origin:center bottom;
+    animation:flicker 2.4s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{ transform:scaleY(1) rotate(0deg); opacity:1; }
+    25%{ transform:scaleY(1.08) rotate(-2deg); opacity:0.95; }
+    50%{ transform:scaleY(0.94) rotate(2deg); opacity:1; }
+    75%{ transform:scaleY(1.05) rotate(-1deg); opacity:0.9; }
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--marigold);
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:clamp(38px, 8vw, 64px);
+    margin:0 0 10px;
+    color:var(--cream);
+  }
+  .hero h1 .accent{ color:var(--marigold); }
+  .hero .sub{
+    max-width:480px;
+    color:var(--muted);
+    font-size:16px;
+  }
+  .scroll-hint{
+    margin-top:36px;
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--muted);
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+  }
+  .scroll-hint .arrow{
+    display:block;
+    margin:8px auto 0;
+    animation:bounce 1.8s infinite;
+  }
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ---------- GARLAND THREAD ---------- */
+  .thread-wrap{
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+    padding:20px 24px 10px;
+  }
+  .thread-wrap::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:repeating-linear-gradient(180deg, var(--marigold-dim) 0 10px, transparent 10px 20px);
+    transform:translateX(-50%);
+    opacity:0.6;
+  }
+  .knot{
+    position:relative;
+    width:18px; height:18px;
+    background:var(--marigold);
+    border-radius:50%;
+    margin:0 auto;
+    box-shadow:0 0 12px rgba(226,147,42,0.5);
+    z-index:2;
+  }
+  .memory{
+    position:relative;
+    padding:34px 0 54px;
+    z-index:2;
+  }
+  .memory-inner{
+    max-width:460px;
+    margin:0 auto;
+  }
+  .memory:nth-of-type(odd) .memory-inner{ margin-right:auto; margin-left:0; text-align:left; }
+  .memory:nth-of-type(even) .memory-inner{ margin-left:auto; margin-right:0; text-align:right; }
+  @media (max-width:640px){
+    .memory-inner{ margin:0 auto !important; text-align:left !important; max-width:100%; }
+  }
+  .memory-label{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--marigold);
+    margin:14px 0 8px;
+  }
+  .memory h2{
+    font-size:clamp(22px, 4.4vw, 30px);
+    margin:0 0 12px;
+    color:var(--cream);
+  }
+  .memory-card{
+    background:var(--card-bg);
+    border:1px solid rgba(226,147,42,0.18);
+    border-radius:10px;
+    padding:20px 22px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.25);
+  }
+  .memory-card p{
+    margin:0 0 10px;
+    color:var(--muted);
+    font-size:15.5px;
+  }
+  .memory-card p:last-child{ margin-bottom:0; }
+
+  /* ---------- FINALE / DEVOTIONAL ---------- */
+  .finale{
+    max-width:600px;
+    margin:20px auto 0;
+    padding:50px 24px 100px;
+    text-align:center;
+    position:relative;
+    z-index:2;
+  }
+  .finale h2{
+    font-size:clamp(28px, 6vw, 40px);
+    margin:0 0 14px;
+    color:var(--marigold);
+  }
+  .finale p{
+    color:var(--muted);
+    font-size:16px;
+    max-width:460px;
+    margin:0 auto 26px;
+  }
+  .light-btn{
+    font-family:'Space Mono', monospace;
+    background:transparent;
+    border:1.5px solid var(--marigold);
+    color:var(--marigold);
+    padding:13px 26px;
+    border-radius:40px;
+    font-size:13px;
+    letter-spacing:1px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .light-btn:hover{ background:var(--marigold); color:var(--bg); }
+  .final-diya{
+    width:70px;
+    margin:26px auto 0;
+    opacity:0.35;
+    transition:opacity 0.6s ease;
+  }
+  .final-diya.lit{ opacity:1; }
+  .final-diya .flame{ animation:none; opacity:0; transition:opacity 0.4s ease 0.2s; }
+  .final-diya.lit .flame{ opacity:1; animation:flicker 2.4s ease-in-out infinite; }
+  .revealed{
+    margin-top:20px;
+    font-family:'Yatra One', cursive;
+    font-size:19px;
+    color:var(--cream);
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transition:opacity 0.6s ease;
+  }
+  .revealed.show{ opacity:1; max-height:400px; margin-top:20px; }
+
+  canvas#glow{ position:fixed; inset:0; pointer-events:none; z-index:50; }
+
+  footer{
+    text-align:center;
+    padding:26px;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--marigold-dim);
+    letter-spacing:1px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="glow"></canvas>
+
+<!-- HERO -->
+<div class="hero">
+  <svg class="diya" viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="52" rx="40" ry="12" fill="#3a281a" stroke="var(--marigold-dim)" stroke-width="2"/>
+    <path d="M14 50 Q50 66 86 50 Q86 40 50 40 Q14 40 14 50 Z" fill="#c1440e" opacity="0.85"/>
+    <path class="flame" d="M50 36 Q44 24 50 12 Q56 24 50 36 Z" fill="var(--flame)"/>
+  </svg>
+  <div class="eyebrow">Happy Friendship Day</div>
+  <h1>For <span class="accent">DoctorSaab</span> 🧡</h1>
+  <div class="sub">Some friendships don't need a special day to be felt — but today, I wanted to say it anyway.</div>
+  <div class="scroll-hint">scroll down
+    <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b7a790" stroke-width="2"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+  </div>
+</div>
+
+<div class="thread-wrap">
+
+  <div class="knot"></div>
+  <!-- MEMORY 1 -->
+  <div class="memory">
+    <div class="memory-inner">
+      <div class="memory-label">Knot 01</div>
+      <h2>Through the Difficult Days</h2>
+      <div class="memory-card">
+        <p>There was a time when things weren't going well for me at all. You didn't wait to be asked, and you didn't make it complicated — you were just there, exactly when it mattered.</p>
+        <p>I didn't have to explain everything for you to understand. That kind of presence, without conditions, is something I don't take lightly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="knot"></div>
+  <!-- MEMORY 2 -->
+  <div class="memory">
+    <div class="memory-inner">
+      <div class="memory-label">Knot 02</div>
+      <h2>Through the Easy Days, Too</h2>
+      <div class="memory-card">
+        <p>It's easy to remember who shows up during a crisis. But you were just as present in the simple, easy, uneventful days — the ones that don't get talked about but quietly hold a friendship together.</p>
+        <p>You didn't only exist for the hard chapters. You were part of the ordinary, good ones too, and that consistency means more than any single big gesture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="knot"></div>
+  <!-- MEMORY 3 -->
+  <div class="memory">
+    <div class="memory-inner">
+      <div class="memory-label">Knot 03</div>
+      <h2>You Never Let Me Down</h2>
+      <div class="memory-card">
+        <p>Whatever I needed, you helped in whatever way you could — sometimes with advice, sometimes just by being around, sometimes by doing more than you probably had to.</p>
+        <p>Not once did I feel like I was asking too much or that you'd disappear when it got inconvenient. That reliability isn't something I've found easily elsewhere.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="knot"></div>
+  <!-- MEMORY 4 -->
+  <div class="memory">
+    <div class="memory-inner">
+      <div class="memory-label">Knot 04</div>
+      <h2>The Days I Still Return To</h2>
+      <div class="memory-card">
+        <p>I know life can't go back to being exactly how it was — people move, things change, days pass and don't repeat. But the memories from those old days haven't gone anywhere.</p>
+        <p>Every once in a while, something small brings them back — a place, a song, a random thought — and suddenly I'm right back there, missing those days all over again, grateful they happened at all.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FINALE / DEVOTIONAL -->
+<div class="finale">
+  <h2>Thank You — To You, and To Mahadev</h2>
+  <p>For every difficult day you stood through with me, for every easy one you still chose to be part of, and for a friendship I'll carry with me no matter how much life changes around it.</p>
+  <button class="light-btn" onclick="lightDiya()">Light the diya 🪔</button>
+  <svg class="final-diya" id="finalDiya" viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="52" rx="40" ry="12" fill="#3a281a" stroke="var(--marigold-dim)" stroke-width="2"/>
+    <path d="M14 50 Q50 66 86 50 Q86 40 50 40 Q14 40 14 50 Z" fill="#c1440e" opacity="0.85"/>
+    <path class="flame" d="M50 36 Q44 24 50 12 Q56 24 50 36 Z" fill="var(--flame)"/>
+  </svg>
+  <div class="revealed" id="revealedMsg">Thank you, Mahadev, for placing this friendship in my life — and thank you, DoctorSaab, for never once making me feel alone in it.</div>
+</div>
+
+<footer>HAPPY FRIENDSHIP DAY · FOR DOCTORSAAB 🧡</footer>
+
+<script>
+function lightDiya(){
+  document.getElementById('finalDiya').classList.add('lit');
+  document.getElementById('revealedMsg').classList.add('show');
+  fireGlow();
+}
+
+const canvas = document.getElementById('glow');
+const ctx = canvas.getContext('2d');
+function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+let particles = [];
+function fireGlow(){
+  particles = [];
+  const rect = document.getElementById('finalDiya').getBoundingClientRect();
+  const originX = rect.left + rect.width/2;
+  const originY = rect.top + rect.height/2;
+  for(let i=0;i<50;i++){
+    particles.push({
+      x: originX,
+      y: originY,
+      vx: (Math.random()-0.5)*3,
+      vy: -Math.random()*3-1,
+      size: Math.random()*4+2,
+      life: 100
+    });
+  }
+  requestAnimationFrame(animate);
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life -= 1.4;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(255,179,71,${Math.max(p.life/100,0)})`;
+    ctx.fill();
+  });
+  particles = particles.filter(p=>p.life>0);
+  if(particles.length>0){ requestAnimationFrame(animate); }
+  else { ctx.clearRect(0,0,canvas.width,canvas.height); }
+}
+</script>
+
+</body>
+</html>
